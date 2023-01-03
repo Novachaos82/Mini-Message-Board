@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include("./partials/head.ejs") %>
+
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="header-div">
+      <h1 class="title"><%= title %></h1>
+    </div>
+
+    <a class="linkToNew" href="/new"> new Data </a>
+    <div class="box-div">
+      <%if (messages.length>0){ messages.forEach(msg=> {%>
+      <div class="box">
+        <p class="box-title"><%=msg.title%></p>
+        <p class="box-description"><%=msg.description%></p>
+
+        <div class="botton-box-div">
+          <p class="box-username">by 
+            <span class="user-span"><%=msg.username%><span/></p>
+
+          <p class="box-date"><%=msg.added%></p>
+        </div>
+      </div>
+      <%} ) } else{%>
+      <p>there are no data</p>
+      <%}%>
+      
+    </div>
   </body>
 </html>
